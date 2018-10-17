@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        TmdbService().discoverMovies(by: [18]) { movies in
+            print(movies ?? [])
+        }
     }
 
 
