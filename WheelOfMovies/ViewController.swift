@@ -22,3 +22,10 @@ class ViewController: UIViewController {
 
 }
 
+
+// - For update Status Bar Color
+extension ViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}

@@ -22,6 +22,7 @@
 		0CB483E021776364009A1EFC /* DiscoverDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483DF21776364009A1EFC /* DiscoverDto.swift */; };
 		0CB483E321776F78009A1EFC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483E221776F78009A1EFC /* Endpoint.swift */; };
 		0CB483E521776FEC009A1EFC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483E421776FEC009A1EFC /* ArrayExtension.swift */; };
+		0CB483E921778340009A1EFC /* Roulette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483E821778340009A1EFC /* Roulette.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		0CB483DF21776364009A1EFC /* DiscoverDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDto.swift; sourceTree = "<group>"; };
 		0CB483E221776F78009A1EFC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0CB483E421776FEC009A1EFC /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		0CB483E821778340009A1EFC /* Roulette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roulette.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				0CB483DA2176264E009A1EFC /* Services */,
 				0CB483D221760F68009A1EFC /* Entities */,
+				0CB483E821778340009A1EFC /* Roulette.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CB483DE2176272F009A1EFC /* AppConfig.swift in Sources */,
+				0CB483E921778340009A1EFC /* Roulette.swift in Sources */,
 				0CB483B8217604ED009A1EFC /* ViewController.swift in Sources */,
 				0CB483B6217604ED009A1EFC /* AppDelegate.swift in Sources */,
 				0CB483E521776FEC009A1EFC /* ArrayExtension.swift in Sources */,
