@@ -12,15 +12,22 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var rouletteCollectionView: UICollectionView!
     
+    var moviesToDraw = [Movie]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         rouletteCollectionView.delegate = self
         rouletteCollectionView.dataSource = self
         
-//        TmdbService().discoverMovies(by: [18]) { movies in
-//            print(movies ?? [])
-//        }
+        TmdbService().discoverMovies(by: [18]) { movies in
+            if let movies = movies {
+                print(movies.count)
+                self.moviesToDraw = movies
+                self.rouletteCollectionView.collectionViewLayout.reloadPositioning()
+                self.rouletteCollectionView.reloadData()
+            }
+        }
     }
     
 }
@@ -29,13 +36,15 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        let total = 10000 * moviesToDraw.count
+        return total > 0 ? total : 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "posterCell", for: indexPath)
         cell.backgroundColor = UIColor.black
-        // Configure the cell
+        
+        // let index = indexPath.row % (MY_ARRAY).count
         return cell
     }
     

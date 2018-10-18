@@ -34,6 +34,8 @@ class RouletteCollectionViewLayout: UICollectionViewLayout {
     
     var attributesList = [RouletteCollectionViewLayoutAttributes]()
     
+    var isInitialing = true
+    
     override var collectionViewContentSize: CGSize {
         return CGSize(width: CGFloat(collectionView!.numberOfItems(inSection: 0)) * itemSize.width, height: collectionView!.bounds.height)
     }
@@ -41,6 +43,12 @@ class RouletteCollectionViewLayout: UICollectionViewLayout {
     override func prepare() {
         super.prepare()
         
+        if isInitialing {
+            isInitialing = false
+            let middle: CGFloat = CGFloat( (collectionView!.numberOfItems(inSection: 0)/2) )
+            let factor = -angleAtExtreme/(collectionViewContentSize.width - collectionView!.bounds.width)
+            collectionView!.contentOffset.x = middle * anglePerItem / factor
+        }
         let centerX = collectionView!.contentOffset.x + (collectionView!.bounds.width/2.0)
         let anchorPointY = ((itemSize.height / 2.0) + radius) / itemSize.height
         
@@ -76,7 +84,8 @@ class RouletteCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return attributesList[indexPath.row]
+        print("layoutAttributesForItem: \(attributesList.count)")
+        return attributesList[indexPath.row % attributesList.count]
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
@@ -101,6 +110,17 @@ class RouletteCollectionViewLayout: UICollectionViewLayout {
         }
         finalContentOffset.x = multiplier * anglePerItem / factor
         return finalContentOffset
+    }
+    
+}
+
+
+extension UICollectionViewLayout {
+    
+    func reloadPositioning() {
+        if let this = self as? RouletteCollectionViewLayout {
+            this.isInitialing = true
+        }
     }
     
 }
