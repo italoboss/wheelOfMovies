@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CB483B6217604ED009A1EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483B5217604ED009A1EFC /* AppDelegate.swift */; };
-		0CB483B8217604ED009A1EFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483B7217604ED009A1EFC /* ViewController.swift */; };
+		0CB483B8217604ED009A1EFC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483B7217604ED009A1EFC /* MainViewController.swift */; };
 		0CB483BB217604ED009A1EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB483B9217604ED009A1EFC /* Main.storyboard */; };
 		0CB483BE217604ED009A1EFC /* WheelOfMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483BC217604ED009A1EFC /* WheelOfMovies.xcdatamodeld */; };
 		0CB483C0217604EF009A1EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB483BF217604EF009A1EFC /* Assets.xcassets */; };
@@ -23,12 +23,15 @@
 		0CB483E321776F78009A1EFC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483E221776F78009A1EFC /* Endpoint.swift */; };
 		0CB483E521776FEC009A1EFC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483E421776FEC009A1EFC /* ArrayExtension.swift */; };
 		0CB483E921778340009A1EFC /* Roulette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483E821778340009A1EFC /* Roulette.swift */; };
+		0CB483EB217825DC009A1EFC /* RouletteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483EA217825DC009A1EFC /* RouletteCollectionViewLayout.swift */; };
+		0CB483EE21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */; };
+		0CB483F02178A601009A1EFC /* RouletteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0CB483B2217604ED009A1EFC /* WheelOfMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WheelOfMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB483B5217604ED009A1EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0CB483B7217604ED009A1EFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0CB483B7217604ED009A1EFC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0CB483BA217604ED009A1EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CB483BD217604ED009A1EFC /* WheelOfMovies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WheelOfMovies.xcdatamodel; sourceTree = "<group>"; };
 		0CB483BF217604EF009A1EFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +47,9 @@
 		0CB483E221776F78009A1EFC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0CB483E421776FEC009A1EFC /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		0CB483E821778340009A1EFC /* Roulette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roulette.swift; sourceTree = "<group>"; };
+		0CB483EA217825DC009A1EFC /* RouletteCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewLayout.swift; sourceTree = "<group>"; };
+		0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
+		0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +89,6 @@
 				0CB483CB21760533009A1EFC /* Views */,
 				0CB483CA21760522009A1EFC /* Controllers */,
 				0CB483D121760A79009A1EFC /* Components */,
-				0CB483B7217604ED009A1EFC /* ViewController.swift */,
 				0CB483B9217604ED009A1EFC /* Main.storyboard */,
 				0CB483BF217604EF009A1EFC /* Assets.xcassets */,
 				0CB483C1217604EF009A1EFC /* LaunchScreen.storyboard */,
@@ -98,6 +103,7 @@
 		0CB483CA21760522009A1EFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0CB483B7217604ED009A1EFC /* MainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -105,6 +111,7 @@
 		0CB483CB21760533009A1EFC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0CB483EC21782C52009A1EFC /* RouletteCollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +166,16 @@
 				0CB483E421776FEC009A1EFC /* ArrayExtension.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		0CB483EC21782C52009A1EFC /* RouletteCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0CB483EA217825DC009A1EFC /* RouletteCollectionViewLayout.swift */,
+				0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */,
+				0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */,
+			);
+			path = RouletteCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +249,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB483EB217825DC009A1EFC /* RouletteCollectionViewLayout.swift in Sources */,
+				0CB483EE21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift in Sources */,
 				0CB483DE2176272F009A1EFC /* AppConfig.swift in Sources */,
 				0CB483E921778340009A1EFC /* Roulette.swift in Sources */,
-				0CB483B8217604ED009A1EFC /* ViewController.swift in Sources */,
+				0CB483B8217604ED009A1EFC /* MainViewController.swift in Sources */,
 				0CB483B6217604ED009A1EFC /* AppDelegate.swift in Sources */,
 				0CB483E521776FEC009A1EFC /* ArrayExtension.swift in Sources */,
 				0CB483D421760F93009A1EFC /* Movie.swift in Sources */,
@@ -242,6 +261,7 @@
 				0CB483DC2176267B009A1EFC /* TmdbService.swift in Sources */,
 				0CB483CE21760584009A1EFC /* CoreDataManager.swift in Sources */,
 				0CB483BE217604ED009A1EFC /* WheelOfMovies.xcdatamodeld in Sources */,
+				0CB483F02178A601009A1EFC /* RouletteCollectionViewCell.swift in Sources */,
 				0CB483E021776364009A1EFC /* DiscoverDto.swift in Sources */,
 				0CB483E321776F78009A1EFC /* Endpoint.swift in Sources */,
 				0CB483D621760FAF009A1EFC /* Genre+Dto.swift in Sources */,

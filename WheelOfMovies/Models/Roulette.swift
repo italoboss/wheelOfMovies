@@ -11,6 +11,7 @@ import Foundation
 // - Main Business Rules class
 class Roulette {
     
+    var discover: DiscoverDto?
     
     
 }
