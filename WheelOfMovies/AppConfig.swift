@@ -37,11 +37,11 @@ extension ColorPalette {
     var color: UIColor {
         switch self {
         case .primary:
-            return UIColor(red: 102/255, green: 173/255, blue: 127/255, alpha: 1)
+            return UIColor(red: 5/255, green: 204/255, blue: 113/255, alpha: 1)
         case .secondary:
-            return UIColor(red: 65/255, green: 93/255, blue: 85/255, alpha: 1)
+            return UIColor(red: 15/255, green: 112/255, blue: 76/255, alpha: 1)
         case .dark:
-            return UIColor(red: 14/255, green: 29/255, blue: 36/255, alpha: 1)
+            return UIColor(red: 12/255, green: 28/255, blue: 36/255, alpha: 1)
         case .light:
             return UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
         case .grayBg:

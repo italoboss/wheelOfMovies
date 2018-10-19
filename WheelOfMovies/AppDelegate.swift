@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func applyColorPalette() {
         UINavigationBar.appearance().barTintColor = ColorPalette.dark.color
         UINavigationBar.appearance().tintColor = ColorPalette.light.color
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorPalette.light.color]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorPalette.primary.color]
     }
 
 }

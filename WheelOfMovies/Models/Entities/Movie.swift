@@ -13,7 +13,7 @@ struct Movie: Codable {
     var id: Int
     var title: String
     var overview: String
-    var posterPath: String
+    var posterPath: String?
     var voteAverage: Float
     
     var posterImage: UIImage?

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Genre: Codable {
+struct Genre: Codable, Equatable {
     var id: Int?
     var name: String?
 }

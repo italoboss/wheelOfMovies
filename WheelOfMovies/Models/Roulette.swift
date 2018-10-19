@@ -12,6 +12,21 @@ import Foundation
 class Roulette {
     
     var discover: DiscoverDto?
+    var selectedGenre: Genre?
     
+    
+    
+}
+
+
+extension Roulette: GenrePickerViewControllerDelegate {
+    
+    func didSelect(genre: Genre) {
+        selectedGenre = genre
+    }
+    
+    func didAlreadySelected() -> Genre? {
+        return selectedGenre
+    }
     
 }

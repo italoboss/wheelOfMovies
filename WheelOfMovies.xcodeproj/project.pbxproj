@@ -27,6 +27,8 @@
 		0CB483EE21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */; };
 		0CB483F02178A601009A1EFC /* RouletteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */; };
 		0CB483F22179FE5F009A1EFC /* RouletteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */; };
+		0CB483F8217A1579009A1EFC /* GenrePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483F7217A1579009A1EFC /* GenrePickerViewController.swift */; };
+		0CB483FA217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483F9217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouletteCollectionViewCell.xib; sourceTree = "<group>"; };
+		0CB483F7217A1579009A1EFC /* GenrePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenrePickerViewController.swift; sourceTree = "<group>"; };
+		0CB483F9217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenrePickerViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +95,6 @@
 				0CB483CB21760533009A1EFC /* Views */,
 				0CB483CA21760522009A1EFC /* Controllers */,
 				0CB483D121760A79009A1EFC /* Components */,
-				0CB483B9217604ED009A1EFC /* Main.storyboard */,
 				0CB483BF217604EF009A1EFC /* Assets.xcassets */,
 				0CB483C1217604EF009A1EFC /* LaunchScreen.storyboard */,
 				0CB483C4217604EF009A1EFC /* Info.plist */,
@@ -106,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				0CB483B7217604ED009A1EFC /* MainViewController.swift */,
+				0CB483F7217A1579009A1EFC /* GenrePickerViewController.swift */,
+				0CB483F9217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 		0CB483CB21760533009A1EFC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0CB483B9217604ED009A1EFC /* Main.storyboard */,
 				0CB483EC21782C52009A1EFC /* RouletteCollectionView */,
 			);
 			path = Views;
@@ -261,9 +267,11 @@
 				0CB483B6217604ED009A1EFC /* AppDelegate.swift in Sources */,
 				0CB483E521776FEC009A1EFC /* ArrayExtension.swift in Sources */,
 				0CB483D421760F93009A1EFC /* Movie.swift in Sources */,
+				0CB483F8217A1579009A1EFC /* GenrePickerViewController.swift in Sources */,
 				0CB483D02176082F009A1EFC /* ErrorHandler.swift in Sources */,
 				0CB483DC2176267B009A1EFC /* TmdbService.swift in Sources */,
 				0CB483CE21760584009A1EFC /* CoreDataManager.swift in Sources */,
+				0CB483FA217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift in Sources */,
 				0CB483BE217604ED009A1EFC /* WheelOfMovies.xcdatamodeld in Sources */,
 				0CB483F02178A601009A1EFC /* RouletteCollectionViewCell.swift in Sources */,
 				0CB483E021776364009A1EFC /* DiscoverDto.swift in Sources */,
