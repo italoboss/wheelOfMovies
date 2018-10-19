@@ -6,7 +6,7 @@
 //  Copyright © 2018 Italo Boss. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class TmdbService {
     
@@ -57,6 +57,28 @@ class TmdbService {
                 completion(allGenres.genres)
             }
             
+        }
+        DispatchQueue.global(qos: .background).async {
+            task.resume()
+        }
+    }
+    
+    func downloadImage(from path: String, completion: @escaping (UIImage?) -> Void) {
+        let url = AppConfig.BASE_IMG_URL.appendingPathComponent(path)
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let nserror = error as NSError? {
+                ErrorHandler.shared.consoleLogError(nserror)
+                completion(nil)
+            }
+            
+            if let imageData = data {
+                DispatchQueue.main.async {
+                    completion(UIImage(data: imageData))
+                }
+            }
+            else {
+                completion(nil)
+            }
         }
         DispatchQueue.global(qos: .background).async {
             task.resume()

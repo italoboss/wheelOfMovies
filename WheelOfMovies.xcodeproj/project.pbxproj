@@ -26,6 +26,7 @@
 		0CB483EB217825DC009A1EFC /* RouletteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483EA217825DC009A1EFC /* RouletteCollectionViewLayout.swift */; };
 		0CB483EE21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */; };
 		0CB483F02178A601009A1EFC /* RouletteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */; };
+		0CB483F22179FE5F009A1EFC /* RouletteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		0CB483EA217825DC009A1EFC /* RouletteCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewLayout.swift; sourceTree = "<group>"; };
 		0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouletteCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				0CB483EA217825DC009A1EFC /* RouletteCollectionViewLayout.swift */,
 				0CB483ED21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift */,
 				0CB483EF2178A601009A1EFC /* RouletteCollectionViewCell.swift */,
+				0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */,
 			);
 			path = RouletteCollectionView;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				0CB483C3217604EF009A1EFC /* LaunchScreen.storyboard in Resources */,
 				0CB483C0217604EF009A1EFC /* Assets.xcassets in Resources */,
+				0CB483F22179FE5F009A1EFC /* RouletteCollectionViewCell.xib in Resources */,
 				0CB483BB217604ED009A1EFC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

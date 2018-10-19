@@ -10,6 +10,8 @@ import UIKit
 
 class RouletteCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var posterImageView: UIImageView!
+    
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
         

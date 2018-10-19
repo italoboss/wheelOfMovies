@@ -14,13 +14,14 @@ class MainViewController: UIViewController {
     
     var moviesToDraw = [Movie]()
     
+    let service = TmdbService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        rouletteCollectionView.delegate = self
-        rouletteCollectionView.dataSource = self
+        setupRoulette()
         
-        TmdbService().discoverMovies(by: [18]) { movies in
+        service.discoverMovies(by: [18]) { movies in
             if let movies = movies {
                 print(movies.count)
                 self.moviesToDraw = movies
@@ -28,6 +29,12 @@ class MainViewController: UIViewController {
                 self.rouletteCollectionView.reloadData()
             }
         }
+    }
+    
+    private func setupRoulette() {
+        rouletteCollectionView.delegate = self
+        rouletteCollectionView.dataSource = self
+        rouletteCollectionView.register(UINib(nibName: "RouletteCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "posterCell")
     }
     
 }
@@ -42,9 +49,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "posterCell", for: indexPath)
-        cell.backgroundColor = UIColor.black
+        cell.backgroundColor = UIColor.gray
         
-        // let index = indexPath.row % (MY_ARRAY).count
+        if let posterCell = cell as? RouletteCollectionViewCell {
+            if moviesToDraw.count > 0 {
+                let index = indexPath.row % moviesToDraw.count
+                let movie = moviesToDraw[index]
+                
+                service.downloadImage(from: movie.posterPath) { (image) in
+                    print("Downloaded image of \(movie.title)")
+                    if let image = image {
+                        posterCell.posterImageView.image = image
+                    }
+                    else {
+                        posterCell.posterImageView.image = UIImage(named: "no-image")
+                    }
+                }
+            }
+            return posterCell
+        }
         return cell
     }
     

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Italo Boss. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Movie: Codable {
     
@@ -15,6 +15,8 @@ struct Movie: Codable {
     var overview: String
     var posterPath: String
     var voteAverage: Float
+    
+    var posterImage: UIImage?
 
     private enum CodingKeys: String, CodingKey {
         case id

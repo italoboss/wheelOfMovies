@@ -10,7 +10,7 @@ import UIKit
 
 class RouletteCollectionViewLayout: UICollectionViewLayout {
 
-    let itemSize = CGSize(width: 133, height: 173)
+    let itemSize = CGSize(width: 150, height: 225)
     
     var angleAtExtreme: CGFloat {
         return collectionView!.numberOfItems(inSection: 0) > 0
