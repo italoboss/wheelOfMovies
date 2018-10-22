@@ -39,3 +39,18 @@ struct Movie: Codable {
     }
     
 }
+
+
+// MARK: - Local access
+extension Movie {
+    
+    var isSaved: Bool {
+        return false
+    }
+    
+    func saveLocal() -> Bool {
+        
+        return true
+    }
+    
+}

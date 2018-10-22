@@ -30,6 +30,9 @@ class MovieDetailViewController: UIViewController {
             titleLabel.textColor = ColorPalette.primary.color
             posterImageView.image = movie.posterImage
             overviewTextView.text = movie.overview
+            
+            let icon = UIImage(named: movie.isSaved ? "liked" : "unliked")
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(MovieDetailViewController.handleRightBarButtonItem))
         }
     }
     
@@ -42,6 +45,13 @@ class MovieDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
+    }
+    
+    @objc func handleRightBarButtonItem() {
+        print("Tap right bar button")
+        if let movie = movie, movie.saveLocal() {
+            navigationItem.rightBarButtonItem?.image = UIImage(named: "liked")
+        }
     }
 
 }

@@ -61,8 +61,10 @@ extension MainViewController {
 extension MainViewController: GenrePickerViewControllerDelegate {
     
     func didSelect(genre: Genre) {
-        selectedGenre = genre
-        loadMoviesFromGenre()
+        if selectedGenre != genre {
+            selectedGenre = genre
+            loadMoviesFromGenre()
+        }
     }
     
     func didAlreadySelected() -> Genre? {

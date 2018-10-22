@@ -32,6 +32,7 @@
 		0CB483FC217CB236009A1EFC /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483FB217CB236009A1EFC /* MovieDetailViewController.swift */; };
 		0CB483FE217CBDD2009A1EFC /* RouletteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483FD217CBDD2009A1EFC /* RouletteCollectionViewController.swift */; };
 		0CB48400217D793F009A1EFC /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483FF217D793F009A1EFC /* GradientExtension.swift */; };
+		0CB48404217E1AAF009A1EFC /* MovieDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB48403217E1AAF009A1EFC /* MovieDao.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		0CB483FB217CB236009A1EFC /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0CB483FD217CBDD2009A1EFC /* RouletteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewController.swift; sourceTree = "<group>"; };
 		0CB483FF217D793F009A1EFC /* GradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
+		0CB48403217E1AAF009A1EFC /* MovieDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDao.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		0CB483CC2176053C009A1EFC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0CB48402217E1A95009A1EFC /* Dao */,
 				0CB483DA2176264E009A1EFC /* Services */,
 				0CB483D221760F68009A1EFC /* Entities */,
 				0CB483E821778340009A1EFC /* Roulette.swift */,
@@ -194,6 +197,14 @@
 				0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */,
 			);
 			path = RouletteCollectionView;
+			sourceTree = "<group>";
+		};
+		0CB48402217E1A95009A1EFC /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				0CB48403217E1AAF009A1EFC /* MovieDao.swift */,
+			);
+			path = Dao;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +288,7 @@
 				0CB483B6217604ED009A1EFC /* AppDelegate.swift in Sources */,
 				0CB483E521776FEC009A1EFC /* ArrayExtension.swift in Sources */,
 				0CB483D421760F93009A1EFC /* Movie.swift in Sources */,
+				0CB48404217E1AAF009A1EFC /* MovieDao.swift in Sources */,
 				0CB483F8217A1579009A1EFC /* GenrePickerViewController.swift in Sources */,
 				0CB483D02176082F009A1EFC /* ErrorHandler.swift in Sources */,
 				0CB483DC2176267B009A1EFC /* TmdbService.swift in Sources */,
