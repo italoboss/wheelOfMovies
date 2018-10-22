@@ -29,6 +29,9 @@
 		0CB483F22179FE5F009A1EFC /* RouletteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */; };
 		0CB483F8217A1579009A1EFC /* GenrePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483F7217A1579009A1EFC /* GenrePickerViewController.swift */; };
 		0CB483FA217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483F9217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift */; };
+		0CB483FC217CB236009A1EFC /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483FB217CB236009A1EFC /* MovieDetailViewController.swift */; };
+		0CB483FE217CBDD2009A1EFC /* RouletteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483FD217CBDD2009A1EFC /* RouletteCollectionViewController.swift */; };
+		0CB48400217D793F009A1EFC /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB483FF217D793F009A1EFC /* GradientExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		0CB483F12179FE5F009A1EFC /* RouletteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouletteCollectionViewCell.xib; sourceTree = "<group>"; };
 		0CB483F7217A1579009A1EFC /* GenrePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenrePickerViewController.swift; sourceTree = "<group>"; };
 		0CB483F9217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenrePickerViewControllerDelegate.swift; sourceTree = "<group>"; };
+		0CB483FB217CB236009A1EFC /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		0CB483FD217CBDD2009A1EFC /* RouletteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteCollectionViewController.swift; sourceTree = "<group>"; };
+		0CB483FF217D793F009A1EFC /* GradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +114,11 @@
 		0CB483CA21760522009A1EFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0CB483FD217CBDD2009A1EFC /* RouletteCollectionViewController.swift */,
 				0CB483B7217604ED009A1EFC /* MainViewController.swift */,
 				0CB483F7217A1579009A1EFC /* GenrePickerViewController.swift */,
 				0CB483F9217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift */,
+				0CB483FB217CB236009A1EFC /* MovieDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 			children = (
 				0CB483E221776F78009A1EFC /* Endpoint.swift */,
 				0CB483E421776FEC009A1EFC /* ArrayExtension.swift */,
+				0CB483FF217D793F009A1EFC /* GradientExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB483FE217CBDD2009A1EFC /* RouletteCollectionViewController.swift in Sources */,
 				0CB483EB217825DC009A1EFC /* RouletteCollectionViewLayout.swift in Sources */,
 				0CB483EE21782C9F009A1EFC /* RouletteCollectionViewLayoutAttributes.swift in Sources */,
 				0CB483DE2176272F009A1EFC /* AppConfig.swift in Sources */,
@@ -272,7 +282,9 @@
 				0CB483DC2176267B009A1EFC /* TmdbService.swift in Sources */,
 				0CB483CE21760584009A1EFC /* CoreDataManager.swift in Sources */,
 				0CB483FA217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift in Sources */,
+				0CB483FC217CB236009A1EFC /* MovieDetailViewController.swift in Sources */,
 				0CB483BE217604ED009A1EFC /* WheelOfMovies.xcdatamodeld in Sources */,
+				0CB48400217D793F009A1EFC /* GradientExtension.swift in Sources */,
 				0CB483F02178A601009A1EFC /* RouletteCollectionViewCell.swift in Sources */,
 				0CB483E021776364009A1EFC /* DiscoverDto.swift in Sources */,
 				0CB483E321776F78009A1EFC /* Endpoint.swift in Sources */,
