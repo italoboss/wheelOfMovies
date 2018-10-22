@@ -15,6 +15,7 @@ struct Movie: Codable {
     var overview: String
     var posterPath: String?
     var voteAverage: Float
+    var releaseDate: String
     
     var posterImage: UIImage?
 
@@ -24,6 +25,7 @@ struct Movie: Codable {
         case overview
         case posterPath = "poster_path"
         case voteAverage = "vote_average"
+        case releaseDate = "release_date"
     }
     
     static func decodeToArray(from data: Data) -> [Movie]? {

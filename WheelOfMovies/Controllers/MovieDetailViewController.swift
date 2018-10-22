@@ -12,6 +12,8 @@ class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var voteAverageLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var movieContentVIew: UIView!
     
@@ -25,10 +27,17 @@ class MovieDetailViewController: UIViewController {
         movieContentVIew.layer.cornerRadius = 10.0
         movieContentVIew.clipsToBounds = true
         
+        updateMovieInfo()
+    }
+    
+    func updateMovieInfo() {
         if let movie = movie {
             titleLabel.text = movie.title
             titleLabel.textColor = ColorPalette.primary.color
             posterImageView.image = movie.posterImage
+            
+            voteAverageLabel.text = "☆  \(movie.voteAverage)"
+            releaseDateLabel.text = movie.releaseDate
             overviewTextView.text = movie.overview
             
             let icon = UIImage(named: movie.isSaved ? "liked" : "unliked")
