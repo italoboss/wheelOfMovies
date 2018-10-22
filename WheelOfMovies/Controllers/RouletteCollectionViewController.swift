@@ -21,6 +21,7 @@ class RouletteCollectionViewController: UICollectionViewController {
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "RouletteCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
         registerForPreviewing(with: self, sourceView: collectionView)
+        collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(RouletteCollectionViewController.handleTap(_:))))
         
         collectionView.isUserInteractionEnabled = false
     }
@@ -42,6 +43,19 @@ class RouletteCollectionViewController: UICollectionViewController {
             self.collectionView.collectionViewLayout.reloadPositioning()
             self.collectionView.reloadData()
             collectionView.isUserInteractionEnabled = false
+        }
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: collectionView)
+        if moviesToDraw.count > 0,
+            let detailVC = getMovieDetail(),
+            let indexPath = collectionView.indexPathForItem(at: location) {
+            
+            let index = (indexPath.row) % moviesToDraw.count
+            let movie = moviesToDraw[index]
+            detailVC.movie = movie
+            self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
     

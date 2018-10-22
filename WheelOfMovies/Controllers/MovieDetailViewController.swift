@@ -13,6 +13,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewTextView: UITextView!
+    @IBOutlet weak var movieContentVIew: UIView!
     
     var movie: Movie?
     
@@ -21,13 +22,14 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        movieContentVIew.layer.cornerRadius = 10.0
+        movieContentVIew.clipsToBounds = true
+        
         if let movie = movie {
             titleLabel.text = movie.title
             titleLabel.textColor = ColorPalette.primary.color
             posterImageView.image = movie.posterImage
             overviewTextView.text = movie.overview
-            
-            //scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: overviewLabel.bottomAnchor).isActive = true
         }
     }
     

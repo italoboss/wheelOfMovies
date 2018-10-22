@@ -160,6 +160,7 @@
                         <viewLayoutGuide key="safeArea" id="UYw-2m-bmj"/>
                     </view>
                     <connections>
+                        <outlet property="movieContentVIew" destination="Avv-mb-DPa" id="ZeF-hN-IKh"/>
                         <outlet property="overviewTextView" destination="Oq7-HO-o9U" id="PpJ-8l-nSB"/>
                         <outlet property="posterImageView" destination="dqE-YY-I5y" id="1QJ-ew-VzX"/>
                         <outlet property="scrollView" destination="ZEr-ce-3qI" id="kpV-2b-fdg"/>
