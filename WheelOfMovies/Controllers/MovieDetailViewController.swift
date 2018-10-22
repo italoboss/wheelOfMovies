@@ -34,6 +34,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let colors = [UIColor.black, UIColor.clear]
         self.navigationController?.navigationBar.setGradientBackground(colors: colors)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
