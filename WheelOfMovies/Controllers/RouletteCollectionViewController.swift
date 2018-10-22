@@ -21,6 +21,8 @@ class RouletteCollectionViewController: UICollectionViewController {
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "RouletteCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
         registerForPreviewing(with: self, sourceView: collectionView)
+        
+        collectionView.isUserInteractionEnabled = false
     }
     
     func loadMovies(from genre: Genre) {
@@ -28,7 +30,7 @@ class RouletteCollectionViewController: UICollectionViewController {
             collectionView.isHidden = false
             service.discoverMovies(by: [genreId]) { movies in
                 if let movies = movies {
-                    print(movies.count)
+                    self.collectionView.isUserInteractionEnabled = true
                     self.moviesToDraw = movies
                     self.collectionView.collectionViewLayout.reloadPositioning()
                     self.collectionView.reloadData()
@@ -36,7 +38,10 @@ class RouletteCollectionViewController: UICollectionViewController {
             }
         }
         else {
-            collectionView.isHidden = true
+            self.moviesToDraw = []
+            self.collectionView.collectionViewLayout.reloadPositioning()
+            self.collectionView.reloadData()
+            collectionView.isUserInteractionEnabled = false
         }
     }
     
@@ -57,8 +62,8 @@ extension RouletteCollectionViewController {
         cell.backgroundColor = UIColor.gray
         
         if let posterCell = cell as? RouletteCollectionViewCell {
-            posterCell.posterImageView.image = UIImage(named: "no-image")
             if moviesToDraw.count > 0 {
+                posterCell.posterImageView.image = UIImage(named: "no-image")
                 let index = indexPath.row % moviesToDraw.count
                 let movie = moviesToDraw[index]
                 
