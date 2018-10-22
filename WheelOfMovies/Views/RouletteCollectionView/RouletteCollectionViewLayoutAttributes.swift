@@ -13,7 +13,14 @@ class RouletteCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
     var anchorPoint = CGPoint(x: 0.5, y: 0.5)
     var angle: CGFloat = 0 {
         didSet {
-            zIndex = Int(angle * 1000000)
+            if angle == 0.0 || angle.significandWidth < 25 {
+                zIndex = Int(1000000)
+                size = CGSize(width: 180, height: 270)
+                center = CGPoint(x: center.x, y: center.y - 10)
+            }
+            else {
+                zIndex = Int(angle * 1000)
+            }
             transform = CGAffineTransform(rotationAngle: angle)
         }
     }

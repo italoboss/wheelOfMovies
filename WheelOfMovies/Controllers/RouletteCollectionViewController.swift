@@ -103,7 +103,7 @@ extension RouletteCollectionViewController: UIViewControllerPreviewingDelegate {
             let detailVC = getMovieDetail(),
             let indexPath = collectionView.indexPathForItem(at: location) {
             
-            let index = (indexPath.row - 2) % moviesToDraw.count
+            let index = (indexPath.row) % moviesToDraw.count
             let movie = moviesToDraw[index]
             detailVC.movie = movie
             return detailVC

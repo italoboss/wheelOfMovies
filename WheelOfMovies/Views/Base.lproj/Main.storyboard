@@ -46,9 +46,9 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysr-Ss-VV0">
-                                <rect key="frame" x="0.0" y="318" width="336" height="280"/>
+                                <rect key="frame" x="0.0" y="362" width="375" height="305"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="C0Z-UK-8ll"/>
+                                    <constraint firstAttribute="height" constant="305" id="C0Z-UK-8ll"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="D2r-Bw-qK7" kind="embed" identifier="ShowRoulette" id="Qfp-jT-y2n"/>
@@ -229,7 +229,7 @@
             <objects>
                 <collectionViewController id="D2r-Bw-qK7" customClass="RouletteCollectionViewController" customModule="WheelOfMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Ymg-dk-AZE">
-                        <rect key="frame" x="0.0" y="0.0" width="336" height="280"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="305"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewLayout key="collectionViewLayout" id="9Zo-JF-NMb" customClass="RouletteCollectionViewLayout" customModule="WheelOfMovies" customModuleProvider="target"/>

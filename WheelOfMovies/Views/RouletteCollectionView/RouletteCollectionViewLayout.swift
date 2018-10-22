@@ -84,7 +84,6 @@ class RouletteCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        print("layoutAttributesForItem: \(attributesList.count)")
         return attributesList[indexPath.row % attributesList.count]
     }
     
