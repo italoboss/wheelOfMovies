@@ -90,4 +90,9 @@ class CoreDataManager: NSObject {
         return managedObj
     }
     
+    func delete(_ object: NSManagedObject) -> Bool {
+        persistentContainer.viewContext.delete(object)
+        return saveContext()
+    }
+    
 }

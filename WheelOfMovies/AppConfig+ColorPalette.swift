@@ -18,7 +18,9 @@ class AppConfig {
         // Some Query Params for default
         let noAdultItem = URLQueryItem(name: "include_adult", value: "false")
         let noVideoItem = URLQueryItem(name: "include_video", value: "false")
-        return Endpoint(scheme: "https", host: "api.themoviedb.org/3", path: "", queryItems: [apiKeyItem, noAdultItem, noVideoItem])
+        let year = Calendar.current.component(.year, from: Date())
+        let maxYearItem = URLQueryItem(name: "release_date.lte", value: "\(year)-12-31")
+        return Endpoint(scheme: "https", host: "api.themoviedb.org/3", path: "", queryItems: [apiKeyItem, noAdultItem, noVideoItem, maxYearItem])
     }
     
     static let BASE_IMG_URL = URL(string: "https://image.tmdb.org/t/p/w500/")!

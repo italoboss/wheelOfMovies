@@ -52,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func createImageDirectory() {
-        print("Creating images directory")
         do {
             let path = AppConfig.LOCAL_IMAGES_PATH
             var isDirectory = ObjCBool(true)

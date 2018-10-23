@@ -10,12 +10,17 @@ import UIKit
 
 class TmdbService {
     
-    func discoverMovies(by genres: [Int], completion: @escaping ([Movie]?) -> Void) {
+    func discoverMovies(by genres: [Int], sorting: String? = nil, completion: @escaping ([Movie]?) -> Void) {
         var discoverEnd = AppConfig.BASE_API_ENDPOINT
         discoverEnd.path = "discover/movie"
         
         let genreItem = URLQueryItem(name: "with_genres", value: genres.join(with: ","))
         discoverEnd.queryItems.append(genreItem)
+        
+        if let sortBy = sorting {
+            let sortItem = URLQueryItem(name: "sort_by", value: sortBy)
+            discoverEnd.queryItems.append(sortItem)
+        }
         
         let task = URLSession.shared.dataTask(with: discoverEnd.url!) { (data, response, error) in
 

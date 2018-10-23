@@ -25,7 +25,7 @@ class RouletteCollectionViewController: UICollectionViewController {
     func loadMovies(from genre: Genre) {
         if let genreId = genre.id {
             collectionView.isHidden = false
-            service.discoverMovies(by: [genreId]) { movies in
+            service.discoverMovies(by: [genreId], sorting: SortBy.random().value) { movies in
                 if let movies = movies {
                     self.collectionView.isUserInteractionEnabled = true
                     self.moviesToDraw = movies
@@ -50,7 +50,7 @@ class RouletteCollectionViewController: UICollectionViewController {
 extension RouletteCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let total = 10000 * moviesToDraw.count
+        let total = 1000 * moviesToDraw.count
         return total > 0 ? total : 3
     }
     

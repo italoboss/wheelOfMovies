@@ -37,6 +37,7 @@
 		0CB4840B217EBE35009A1EFC /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB48409217EBE35009A1EFC /* FavoriteCollectionViewCell.swift */; };
 		0CB4840C217EBE35009A1EFC /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB4840A217EBE35009A1EFC /* FavoriteCollectionViewCell.xib */; };
 		0CB4840F217F421D009A1EFC /* MoviePeekAndPopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4840E217F421D009A1EFC /* MoviePeekAndPopCollectionViewCell.swift */; };
+		0CB48411217F5DE0009A1EFC /* SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB48410217F5DE0009A1EFC /* SortBy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		0CB48409217EBE35009A1EFC /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0CB4840A217EBE35009A1EFC /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		0CB4840E217F421D009A1EFC /* MoviePeekAndPopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePeekAndPopCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CB48410217F5DE0009A1EFC /* SortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +126,8 @@
 		0CB483CA21760522009A1EFC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0CB483FD217CBDD2009A1EFC /* RouletteCollectionViewController.swift */,
 				0CB483B7217604ED009A1EFC /* MainViewController.swift */,
+				0CB483FD217CBDD2009A1EFC /* RouletteCollectionViewController.swift */,
 				0CB483F7217A1579009A1EFC /* GenrePickerViewController.swift */,
 				0CB483F9217A7B0E009A1EFC /* GenrePickerViewControllerDelegate.swift */,
 				0CB483FB217CB236009A1EFC /* MovieDetailViewController.swift */,
@@ -148,6 +150,7 @@
 		0CB483CC2176053C009A1EFC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0CB48412217F5DE8009A1EFC /* Enums */,
 				0CB48402217E1A95009A1EFC /* Dao */,
 				0CB483DA2176264E009A1EFC /* Services */,
 				0CB483D221760F68009A1EFC /* Entities */,
@@ -225,6 +228,14 @@
 				0CB4840A217EBE35009A1EFC /* FavoriteCollectionViewCell.xib */,
 			);
 			path = FavoriteCollection;
+			sourceTree = "<group>";
+		};
+		0CB48412217F5DE8009A1EFC /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0CB48410217F5DE0009A1EFC /* SortBy.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +335,7 @@
 				0CB483F02178A601009A1EFC /* RouletteCollectionViewCell.swift in Sources */,
 				0CB483E021776364009A1EFC /* DiscoverDto.swift in Sources */,
 				0CB483E321776F78009A1EFC /* Endpoint.swift in Sources */,
+				0CB48411217F5DE0009A1EFC /* SortBy.swift in Sources */,
 				0CB483D621760FAF009A1EFC /* Genre+Dto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

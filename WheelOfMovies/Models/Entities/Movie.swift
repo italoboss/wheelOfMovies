@@ -87,4 +87,8 @@ extension Movie {
         return MovieDao.shared.save(self)
     }
     
+    func deleteLocal() -> Bool {
+        return MovieDao.shared.delete(self)
+    }
+    
 }

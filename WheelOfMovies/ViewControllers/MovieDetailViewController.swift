@@ -34,7 +34,7 @@ class MovieDetailViewController: UIViewController {
         if let movie = movie {
             titleLabel.text = movie.title
             titleLabel.textColor = ColorPalette.primary.color
-            posterImageView.image = movie.posterImage
+            posterImageView.image = movie.posterImage != nil ? movie.posterImage : UIImage(named: "placeholder-poster")
             
             voteAverageLabel.text = "☆  \(movie.voteAverage)"
             releaseDateLabel.text = movie.releaseDate
@@ -58,8 +58,21 @@ class MovieDetailViewController: UIViewController {
     
     @objc func handleRightBarButtonItem() {
         print("Tap right bar button")
-        if let movie = movie, movie.saveLocal() {
+        guard let movie = movie else { return }
+        movie.isSaved ? deleteLocally() : saveLocally()
+    }
+    
+    private func saveLocally() {
+        guard let movie = movie else { return }
+        if movie.saveLocal() {
             navigationItem.rightBarButtonItem?.image = UIImage(named: "liked")
+        }
+    }
+    
+    private func deleteLocally() {
+        guard let movie = movie else { return }
+        if movie.deleteLocal() {
+            navigationItem.rightBarButtonItem?.image = UIImage(named: "unliked")
         }
     }
 

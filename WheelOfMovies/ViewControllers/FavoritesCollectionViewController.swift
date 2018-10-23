@@ -18,9 +18,12 @@ class FavoritesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.collectionView!.register(UINib(nibName: "FavoriteCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let localMovies = MovieDao.shared.getAll() {
             favoriteList = localMovies
+            collectionView.reloadData()
         }
     }
 
