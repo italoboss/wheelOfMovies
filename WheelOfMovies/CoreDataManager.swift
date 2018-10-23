@@ -43,16 +43,51 @@ class CoreDataManager: NSObject {
     
     // MARK: - Core Data Saving support
     
-    func saveContext () {
+    func saveContext() -> Bool {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
+                return true
             } catch {
                 let nserror = error as NSError
                 ErrorHandler.shared.consoleLogError(nserror)
+                return false
             }
         }
+        return true
+    }
+    
+    func fetchObject<T: NSManagedObject>(by id: Int) -> T? {
+        let predicate = NSPredicate(format: "id == \(id)")
+        let result: [T]? = self.fecth(where: NSCompoundPredicate(andPredicateWithSubpredicates: [predicate]))
+        return result?.first
+    }
+    
+    func fecth<T: NSManagedObject>(where predicates: NSCompoundPredicate? = nil, sorting sorters: [NSSortDescriptor]? = nil) -> [T]? {
+        let context = persistentContainer.viewContext
+        let entityName = String(describing: T.self)
+        let request = NSFetchRequest<T>(entityName: entityName)
+        if let conditions = predicates {
+            request.predicate = conditions
+        }
+        if let sortDescriptors = sorters {
+            request.sortDescriptors = sortDescriptors
+        }
+        
+        do {
+            let records = try context.fetch(request)
+            return records
+        } catch {
+            let nserror = error as NSError
+            ErrorHandler.shared.consoleLogError(nserror)
+            return nil
+        }
+    }
+    
+    func initManagedObject<T: NSManagedObject>() -> T {
+        let managedObj = T(context: persistentContainer.viewContext)
+        return managedObj
     }
     
 }

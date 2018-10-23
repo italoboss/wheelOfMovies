@@ -25,6 +25,10 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: "PickAGenre", sender: nil)
     }
     
+    @IBAction func didTapFavoritesBarButton(_ sender: Any) {
+        performSegue(withIdentifier: "ShowFavorites", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRoulette", let rouletteVC = segue.destination as? RouletteCollectionViewController {
             roulette = rouletteVC

@@ -22,7 +22,11 @@ class AppConfig {
     }
     
     static let BASE_IMG_URL = URL(string: "https://image.tmdb.org/t/p/w500/")!
-    
+    static var LOCAL_IMAGES_PATH: String {
+        var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        path.appendPathComponent("Posters")
+        return path.path
+    }
 }
 
 enum ColorPalette {

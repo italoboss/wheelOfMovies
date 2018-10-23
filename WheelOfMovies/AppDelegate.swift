@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         applyColorPalette()
+        createImageDirectory()
         // Override point for customization after application launch.
         return true
     }
@@ -48,6 +49,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = ColorPalette.dark.color
         UINavigationBar.appearance().tintColor = ColorPalette.light.color
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorPalette.primary.color]
+    }
+    
+    private func createImageDirectory() {
+        print("Creating images directory")
+        do {
+            let path = AppConfig.LOCAL_IMAGES_PATH
+            var isDirectory = ObjCBool(true)
+            if !FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory) {
+                try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
+            }
+        }
+        catch {
+            let nserror = error as NSError
+            ErrorHandler.shared.consoleLogError(nserror)
+        }
     }
 
 }
