@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RouletteCollectionViewCell: UICollectionViewCell {
+class RouletteCollectionViewCell: MoviePeekAndPopCollectionViewCell {
     
     @IBOutlet weak var posterImageView: UIImageView!
     
@@ -18,6 +18,11 @@ class RouletteCollectionViewCell: UICollectionViewCell {
         guard let layoutAtt = layoutAttributes as? RouletteCollectionViewLayoutAttributes else { return }
         self.layer.anchorPoint = layoutAtt.anchorPoint
         self.center.y += (layoutAtt.anchorPoint.y - 0.5) * self.bounds.height
+    }
+    
+    func update(movie: Movie) {
+        self.movie = movie
+        posterImageView.image = movie.posterImage != nil ? movie.posterImage : UIImage(named: "no-image")
     }
     
 }

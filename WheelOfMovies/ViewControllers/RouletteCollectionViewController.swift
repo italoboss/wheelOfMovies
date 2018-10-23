@@ -18,11 +18,7 @@ class RouletteCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Register cell classes
         self.collectionView!.register(UINib(nibName: "RouletteCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
-        registerForPreviewing(with: self, sourceView: collectionView)
-        collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(RouletteCollectionViewController.handleTap(_:))))
-        
         collectionView.isUserInteractionEnabled = false
     }
     
@@ -46,19 +42,6 @@ class RouletteCollectionViewController: UICollectionViewController {
         }
     }
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: collectionView)
-        if moviesToDraw.count > 0,
-            let detailVC = getMovieDetail(),
-            let indexPath = collectionView.indexPathForItem(at: location) {
-            
-            let index = (indexPath.row) % moviesToDraw.count
-            let movie = moviesToDraw[index]
-            detailVC.movie = movie
-            self.navigationController?.pushViewController(detailVC, animated: true)
-        }
-    }
-    
 }
 
 
@@ -77,22 +60,18 @@ extension RouletteCollectionViewController {
         
         if let posterCell = cell as? RouletteCollectionViewCell {
             if moviesToDraw.count > 0 {
-                posterCell.posterImageView.image = UIImage(named: "no-image")
                 let index = indexPath.row % moviesToDraw.count
                 let movie = moviesToDraw[index]
+                posterCell.update(movie: movie)
                 
-                if let poster = movie.posterImage {
-                    posterCell.posterImageView.image = poster
-                }
-                else if let posterPath = movie.posterPath {
+                if movie.posterImage == nil, let posterPath = movie.posterPath {
                     service.downloadImage(from: posterPath) { (image) in
                         self.moviesToDraw[index].posterImage = image
-                        if let image = image {
-                            posterCell.posterImageView.image = image
-                        }
+                        posterCell.update(movie: self.moviesToDraw[index])
                     }
                 }
-                
+                posterCell.navigationController = self.navigationController
+                registerForPreviewing(with: posterCell, sourceView: posterCell)
             }
             return posterCell
         }
@@ -100,44 +79,7 @@ extension RouletteCollectionViewController {
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
 }
-
-
-// MARK: - Controller Previewing Delegate
-
-extension RouletteCollectionViewController: UIViewControllerPreviewingDelegate {
-    
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
-        if moviesToDraw.count > 0,
-            let detailVC = getMovieDetail(),
-            let indexPath = collectionView.indexPathForItem(at: location) {
-            
-            let index = (indexPath.row) % moviesToDraw.count
-            let movie = moviesToDraw[index]
-            detailVC.movie = movie
-            return detailVC
-        }
-        else {
-            return nil
-        }
-        
-    }
-    
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
-    }
-    
-    private func getMovieDetail() -> MovieDetailViewController? {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailVC") as? MovieDetailViewController else { return nil }
-        
-        return detailVC
-    }
-    
-}
-

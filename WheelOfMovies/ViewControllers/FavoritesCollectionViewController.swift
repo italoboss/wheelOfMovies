@@ -37,7 +37,9 @@ class FavoritesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         if let favoriteCell = cell as? FavoriteCollectionViewCell {
+            favoriteCell.navigationController = self.navigationController
             favoriteCell.update(movie: favoriteList[indexPath.row])
+            registerForPreviewing(with: favoriteCell, sourceView: favoriteCell)
             return favoriteCell
         }
         return cell

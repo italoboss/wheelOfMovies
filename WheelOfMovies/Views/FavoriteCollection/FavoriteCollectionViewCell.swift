@@ -8,21 +8,14 @@
 
 import UIKit
 
-class FavoriteCollectionViewCell: UICollectionViewCell {
+class FavoriteCollectionViewCell: MoviePeekAndPopCollectionViewCell {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var movie: Movie?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-//    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-//        self.bounds.size = CGSize(width: 130, height: 170)
-//        clipsToBounds = true
-//    }
     
     func update(movie: Movie) {
         self.movie = movie
