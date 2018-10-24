@@ -30,9 +30,8 @@ class RouletteCollectionViewController: UICollectionViewController {
                 self.setToRoulette(movies: movies)
             }
         }
-        else if genre == Genre.myList {
-            let movies = MovieDao.shared.getAll(in: false)
-            setToRoulette(movies: movies)
+        else if genre == Genre.myList, let movies = MovieDao.shared.getAll(in: false) {
+            setToRoulette(movies: movies.count > 0 ? movies : nil)
         }
         else {
             setToRoulette(movies: nil)
@@ -65,8 +64,7 @@ class RouletteCollectionViewController: UICollectionViewController {
 extension RouletteCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let total = 1000 * moviesToDraw.count
-        return total > 0 ? total : 3
+        return moviesToDraw.count > 0 ? 1000 * moviesToDraw.count : 5
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,6 +85,9 @@ extension RouletteCollectionViewController {
                 }
                 posterCell.viewController = self
                 registerForPreviewing(with: posterCell, sourceView: posterCell)
+            }
+            else {
+                posterCell.posterImageView.image = nil
             }
             return posterCell
         }
