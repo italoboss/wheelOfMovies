@@ -18,6 +18,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieContentVIew: UIView!
     
     var movie: Movie?
+    var delegate: MovieDetailViewControllerDelegate?
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -45,19 +46,7 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let colors = [UIColor.black, UIColor.clear]
-        self.navigationController?.navigationBar.setGradientBackground(colors: colors)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
-    }
-    
     @objc func handleRightBarButtonItem() {
-        print("Tap right bar button")
         guard let movie = movie else { return }
         movie.isSaved ? deleteLocally() : saveLocally()
     }
@@ -73,7 +62,26 @@ class MovieDetailViewController: UIViewController {
         guard let movie = movie else { return }
         if movie.deleteLocal() {
             navigationItem.rightBarButtonItem?.image = UIImage(named: "unliked")
+            delegate?.didUnlike(movie: movie)
         }
     }
 
+}
+
+
+// MARK: - Appearence modifications
+
+extension MovieDetailViewController {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let colors = [UIColor.black, UIColor.clear]
+        self.navigationController?.navigationBar.setGradientBackground(colors: colors)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+    }
+    
 }

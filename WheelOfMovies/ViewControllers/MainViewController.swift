@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var pickGenreButton: UIButton!
     
-    var selectedGenre: Genre?
     var roulette: RouletteCollectionViewController?
     
     override func viewDidLoad() {
@@ -38,13 +37,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    func loadMoviesFromGenre() {
-        if let genre = selectedGenre {
-            pickGenreButton.setTitle(genre.name, for: .normal)
-            roulette?.loadMovies(from: genre)
-        }
-    }
-    
 }
 
 
@@ -65,14 +57,14 @@ extension MainViewController {
 extension MainViewController: GenrePickerViewControllerDelegate {
     
     func didSelect(genre: Genre) {
-        if selectedGenre != genre {
-            selectedGenre = genre
-            loadMoviesFromGenre()
+        if roulette?.selectedGenre != genre {
+            pickGenreButton.setTitle(genre.name, for: .normal)
+            roulette?.loadMovies(from: genre)
         }
     }
     
     func didAlreadySelected() -> Genre? {
-        return selectedGenre
+        return roulette?.selectedGenre
     }
     
 }

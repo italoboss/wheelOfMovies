@@ -12,6 +12,7 @@ private let reuseIdentifier = "posterCell"
 
 class RouletteCollectionViewController: UICollectionViewController {
 
+    var selectedGenre: Genre?
     var moviesToDraw = [Movie]()
     let service = TmdbService()
     
@@ -23,23 +24,37 @@ class RouletteCollectionViewController: UICollectionViewController {
     }
     
     func loadMovies(from genre: Genre) {
+        selectedGenre = genre
         if let genreId = genre.id {
-            collectionView.isHidden = false
             service.discoverMovies(by: [genreId], sorting: SortBy.random().value) { movies in
-                if let movies = movies {
-                    self.collectionView.isUserInteractionEnabled = true
-                    self.moviesToDraw = movies
-                    self.collectionView.collectionViewLayout.reloadPositioning()
-                    self.collectionView.reloadData()
-                }
+                self.setToRoulette(movies: movies)
             }
+        }
+        else if genre == Genre.myList {
+            let movies = MovieDao.shared.getAll(in: false)
+            setToRoulette(movies: movies)
+        }
+        else {
+            setToRoulette(movies: nil)
+        }
+    }
+    
+    private func setToRoulette(movies: [Movie]?) {
+        if let movies = movies {
+            self.moviesToDraw = movies
+            self.collectionView.isUserInteractionEnabled = true
         }
         else {
             self.moviesToDraw = []
-            self.collectionView.collectionViewLayout.reloadPositioning()
-            self.collectionView.reloadData()
-            collectionView.isUserInteractionEnabled = false
+            self.collectionView.isUserInteractionEnabled = false
+            
         }
+        reloadData()
+    }
+    
+    private func reloadData() {
+        self.collectionView.collectionViewLayout.reloadPositioning()
+        self.collectionView.reloadData()
     }
     
 }
@@ -70,7 +85,7 @@ extension RouletteCollectionViewController {
                         posterCell.update(movie: self.moviesToDraw[index])
                     }
                 }
-                posterCell.navigationController = self.navigationController
+                posterCell.viewController = self
                 registerForPreviewing(with: posterCell, sourceView: posterCell)
             }
             return posterCell
@@ -80,6 +95,19 @@ extension RouletteCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+}
+
+
+// MARK: - Movie Detail Delegate
+extension RouletteCollectionViewController: MovieDetailViewControllerDelegate {
+    
+    func didUnlike(movie: Movie) {
+        if let genre = selectedGenre, genre == Genre.myList, let index = moviesToDraw.firstIndex(where: { (iterateMovie) -> Bool in movie.id == iterateMovie.id }) {
+            moviesToDraw.remove(at: index)
+            reloadData()
+        }
     }
     
 }

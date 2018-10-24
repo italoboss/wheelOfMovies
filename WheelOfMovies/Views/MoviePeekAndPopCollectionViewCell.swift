@@ -11,23 +11,26 @@ import UIKit
 class MoviePeekAndPopCollectionViewCell: UICollectionViewCell {
     
     var movie: Movie?
-    weak var navigationController: UINavigationController?
+    weak var viewController: UIViewController?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MoviePeekAndPopCollectionViewCell.handleTap(_:))))
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    override func awakeFromNib() {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MoviePeekAndPopCollectionViewCell.handleTap(_:))))
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        if let movie = movie, let detailVC = getMovieDetail() {
-            detailVC.movie = movie
-            self.navigationController?.pushViewController(detailVC, animated: true)
+        if let movie = movie, let detailVC = getMovieDetailViewController(with: movie) {
+            self.viewController?.navigationController?.pushViewController(detailVC, animated: true)
         }
+    }
+    
+    private func getMovieDetailViewController(with movie: Movie) -> MovieDetailViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailVC") as? MovieDetailViewController else { return nil }
+        detailVC.movie = movie
+        if let delegate = viewController as? MovieDetailViewControllerDelegate {
+            detailVC.delegate = delegate
+        }
+        return detailVC
     }
     
 }
@@ -38,8 +41,7 @@ class MoviePeekAndPopCollectionViewCell: UICollectionViewCell {
 extension MoviePeekAndPopCollectionViewCell: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        if let movie = movie, let detailVC = getMovieDetail() {
-            detailVC.movie = movie
+        if let movie = movie, let detailVC = getMovieDetailViewController(with: movie) {
             return detailVC
         }
         else {
@@ -48,13 +50,7 @@ extension MoviePeekAndPopCollectionViewCell: UIViewControllerPreviewingDelegate 
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
-    }
-    
-    private func getMovieDetail() -> MovieDetailViewController? {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailVC") as? MovieDetailViewController else { return nil }
-        return detailVC
+        self.viewController?.navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
     
 }

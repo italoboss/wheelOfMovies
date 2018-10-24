@@ -83,6 +83,7 @@ extension GenrePickerViewController {
         TmdbService().listGenres { (allGenres) in
             if let allGenres = allGenres {
                 self.genres = allGenres
+                self.genres.append(Genre.myList)
                 self.genrePickerView.reloadComponent(0)
                 if let selected = self.delegate?.didAlreadySelected() {
                     let row: Int = allGenres.firstIndex(of: selected) ?? 0

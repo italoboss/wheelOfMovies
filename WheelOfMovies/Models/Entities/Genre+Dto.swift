@@ -28,3 +28,9 @@ struct GenresDto: Codable {
         }
     }
 }
+
+
+// Shortcut to a Genre representing My list
+extension Genre {
+    static var myList = Genre(id: nil, name: "My list")
+}

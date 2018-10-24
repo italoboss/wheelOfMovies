@@ -18,15 +18,16 @@ class FavoritesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.collectionView!.register(UINib(nibName: "FavoriteCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
+        loadMovies()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    private func loadMovies() {
         if let localMovies = MovieDao.shared.getAll() {
             favoriteList = localMovies
             collectionView.reloadData()
         }
     }
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -40,43 +41,27 @@ class FavoritesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         if let favoriteCell = cell as? FavoriteCollectionViewCell {
-            favoriteCell.navigationController = self.navigationController
+            favoriteCell.viewController = self
             favoriteCell.update(movie: favoriteList[indexPath.row])
             registerForPreviewing(with: favoriteCell, sourceView: favoriteCell)
             return favoriteCell
         }
         return cell
     }
+
+}
+
+
+// MARK: - Movie Detail Delegate
+extension FavoritesCollectionViewController: MovieDetailViewControllerDelegate {
     
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    func didUnlike(movie: Movie) {
+        print("Movie Unliked!")
+        if let index = favoriteList.firstIndex(where: { (iterateMovie) -> Bool in movie.id == iterateMovie.id }) {
+            print(" - at \(index)")
+            favoriteList.remove(at: index)
+            collectionView.deleteItems(at: [IndexPath(row: index, section: 0)])
+        }
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
-
 }
