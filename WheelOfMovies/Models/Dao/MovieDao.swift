@@ -48,8 +48,12 @@ class MovieDao {
         return movie
     }
     
-    func getAll() -> [Movie]? {
-        guard let locals: [FavoriteMovies] = CoreDataManager.shared.fecth() else { return nil }
+    func getAll(in alphabeticOrder: Bool = true) -> [Movie]? {
+        var sorters: [NSSortDescriptor]? = nil
+        if alphabeticOrder {
+            sorters = [ NSSortDescriptor(key: "title", ascending: true) ]
+        }
+        guard let locals: [FavoriteMovies] = CoreDataManager.shared.fecth(sorting: sorters) else { return nil }
         let movies = locals.compactMap { (local) -> Movie? in Movie(from: local) }
         return movies
     }
