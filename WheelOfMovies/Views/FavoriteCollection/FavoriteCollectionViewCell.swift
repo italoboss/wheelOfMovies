@@ -20,7 +20,12 @@ class FavoriteCollectionViewCell: MoviePeekAndPopCollectionViewCell {
     func update(movie: Movie) {
         self.movie = movie
         titleLabel.text = movie.title
-        posterImageView.image = movie.posterImage
+        if let image = movie.posterImage {
+            posterImageView.image = image
+        }
+        else {
+            posterImageView.image = UIImage(named: "placeholder-poster")
+        }
     }
 
 }
