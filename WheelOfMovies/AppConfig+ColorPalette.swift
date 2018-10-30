@@ -10,7 +10,6 @@ import UIKit
 
 class AppConfig {
     
-    // https://api.themoviedb.org/3/
     private static let API_KEY = "a0e34270a65934a3427eecbed2d917eb"
     static var BASE_API_ENDPOINT: Endpoint {
         // Adding API KEY in Query
@@ -18,8 +17,13 @@ class AppConfig {
         // Some Query Params for default
         let noAdultItem = URLQueryItem(name: "include_adult", value: "false")
         let noVideoItem = URLQueryItem(name: "include_video", value: "false")
-        let year = Calendar.current.component(.year, from: Date())
-        let maxYearItem = URLQueryItem(name: "release_date.lte", value: "\(year)-12-31")
+        
+        let today = Date()
+        let day = Calendar.current.component(.day, from: today)
+        let month = Calendar.current.component(.month, from: today)
+        let year = Calendar.current.component(.year, from: today)
+        let maxYearItem = URLQueryItem(name: "release_date.lte", value: "\(year)-\(month)-\(day)")
+        
         return Endpoint(scheme: "https", host: "api.themoviedb.org/3", path: "", queryItems: [apiKeyItem, noAdultItem, noVideoItem, maxYearItem])
     }
     

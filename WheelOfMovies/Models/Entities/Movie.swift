@@ -50,9 +50,9 @@ struct Movie: Codable {
     }
     
     
-    static func decodeToArray(from data: Data) -> [Movie]? {
+    static func decode(from data: Data) -> Movie? {
         do {
-            let decoded = try JSONDecoder().decode([Movie].self, from: data)
+            let decoded = try JSONDecoder().decode(Movie.self, from: data)
             return decoded
         }
         catch {

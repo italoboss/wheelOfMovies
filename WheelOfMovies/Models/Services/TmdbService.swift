@@ -43,6 +43,31 @@ class TmdbService {
         }
     }
     
+    func findMovie(by id: Int, completion: @escaping (Movie?) -> Void) {
+        var movieEnd = AppConfig.BASE_API_ENDPOINT
+        movieEnd.path = "movie/\(id)"
+        
+        let task = URLSession.shared.dataTask(with: movieEnd.url!) { (data, response, error) in
+            
+            guard let result = data,
+                let movie = Movie.decode(from: result)
+                else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+            }
+            
+            DispatchQueue.main.async {
+                completion(movie)
+            }
+            
+        }
+        DispatchQueue.global(qos: .background).async {
+            task.resume()
+        }
+    }
+    
     func listGenres(completion: @escaping ([Genre]?) -> Void) {
         var allGenresEnd = AppConfig.BASE_API_ENDPOINT
         allGenresEnd.path = "genre/movie/list"
